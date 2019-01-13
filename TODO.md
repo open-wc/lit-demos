@@ -1,0 +1,3 @@
+- observers
+- dom querying
+- making an API call
