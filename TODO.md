@@ -1,3 +1,3 @@
 - observers
-- dom querying
-- making an API call
+- more elaborate static get styles demo in `advanced`
+- upwards dataflow/passing functions?

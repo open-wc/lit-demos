@@ -8,7 +8,17 @@ class PropertiesAndAttributes extends LitElement {
       href: { type: String },
       label: { type: String },
       message: { type: String },
+      checked: { type: Boolean }
     }
+  }
+
+  constructor() {
+    super();
+    this.href = 'https://www.github.com/open-wc';
+    this.label = 'open-wc';
+    this.checked = true;
+    // this.message is being set as attribute in `basic-demos.js`.
+    // <properties-and-attributes message="Hello world"></properties-and-attributes>
   }
 
   /**
@@ -33,10 +43,13 @@ class PropertiesAndAttributes extends LitElement {
    */
   render() {
     return html`
-      <!-- by default lit-html will set an attribute on the element -->
+      <!-- By default lit-html will set an attribute on the element -->
       <a href=${this.href}>
         ${this.label}
       </a>
+
+      <!-- You can set boolean attributes by prefixing the attribute name with a question mark -->
+      <input type="checkbox" ?checked=${this.checked}></input>
 
       <!-- 
         To set a property, prefix it with a '.'

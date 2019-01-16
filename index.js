@@ -1,18 +1,16 @@
 import { LitElement, html, css } from 'lit-element';
-import './examples/01-basic-setup.js';
-import './examples/02-manage-properties.js';
-import './examples/03-property-changes.js';
-import './examples/04-properties-and-attributes.js';
-import './examples/05-handle-events.js';
-import './examples/06-conditional-rendering.js';
-import './examples/07-repeated-templates.js';
-import './examples/08-update-arrays-and-objects.js';
-import './examples/09-render-styles.js';
+import './01-basic/basic-demos.js';
+import './02-intermediate/intermediate-demos.js';
+import './03-advanced/advanced-demos.js';
 import '@polymer/paper-card';
+import '@vaadin/vaadin-tabs';
+import { github } from './assets/github.js';
+import { openWc } from './assets/open-wc.js';
+import { Router } from '@vaadin/router';
+import { installMediaQueryWatcher } from 'pwa-helpers/media-query.js';
 
 /**
- * This component combines all the examples to be displayed. See the examples
- * folder for the actual examples.
+ * This component combines all the examples to be displayed. See the basic/intermediate/advanced folders for the actual examples.
  */
 
 class OpenWcDemo extends LitElement {
@@ -21,23 +19,6 @@ class OpenWcDemo extends LitElement {
       css`
         :host {
           display: block;
-          font-family: sans-serif;
-        }
-
-        .demo > *:not(h2) {
-          display: block;
-          border: 1px solid	#e2e2e2;
-          border-radius: 5px;
-          padding: 8px;
-          margin: 8px 0;
-          line-height: 32px;
-        }
-
-        paper-card { 
-          border-radius: 5px;
-          flex: 1; 
-          padding: 12px;
-          margin: 0 0 32px 0;
         }
 
         h2 {
@@ -47,79 +28,94 @@ class OpenWcDemo extends LitElement {
 
         h1 {
           margin-top: 0px;
-          color: #9B35FA;
+          color: #217FF9;
         }
+
+        #header {
+          display: flex;
+        }
+
+        a {
+          text-decoration: none;
+        }
+
+        a:visited {
+          color: #217FF9;
+        }
+
+        #header h1 { flex: 1; }
+        #header svg { margin: 8px 0 8px 0; }
+        .github {transform: scale(1.2, 1.2);}
+        .logo {
+          margin-top: -3px;
+          margin-right: 8px;
+        }
+
+        .nav { margin-bottom: 20px; }
+        .footer { text-align: center; color: #a8a8a8;}
       `,
     ];
   }
 
+  static get properties() {
+    return {
+      activeTab: { type: String },
+      tabs: { type: Array },
+      smallScreen: { type: Boolean }
+    }
+  }
+
+  constructor(){
+    super();
+    this.activeTab = location.pathname === '/' ? 'basic' : location.pathname.replace('/', '');
+    this.tabs = ['basic', 'intermediate', 'advanced'];
+
+    installMediaQueryWatcher(`(min-width: 600px)`, (matches) => {
+      this.smallScreen = !matches;
+    });
+  }
+
+  firstUpdated() {
+    const router = new Router(this.shadowRoot.getElementById('outlet'));
+    router.setRoutes([
+      {path: '/',     component: 'basic-demos'},
+      {path: '/basic',  component: 'basic-demos'},
+      {path: '/intermediate',  component: 'intermediate-demos'},
+      {path: '/advanced',  component: 'advanced-demos'},
+      {path: '(.*)', redirect: '/', action: () => {
+        this.activeTab = 'basic';
+        }
+      }
+    ]);
+  }
+
+  switchRoute(route) {
+    this.activeTab = route;
+    Router.go(`/${route}`); 
+  }
+
   render() {
     return html`
-      <h1>Basic demos</h1>
-      
-      <paper-card>
-        <div class="demo">
-          <h2>Basic setup</h2>
-          <basic-setup></basic-setup>
-        </div>
-      </paper-card>
-
-      <paper-card>
-        <div class="demo">
-          <h2>Manage properties</h2>
-          <manage-properties message="Hello world"></manage-properties>
-        </div>
-      </paper-card>
-
-      <paper-card>
-        <div class="demo">
-          <h2>Property changes</h2>
-          <property-changes></property-changes>
-        </div>
-      </paper-card>
-
-      <paper-card>
-        <div class="demo">
-          <h2>Properties and attributes</h2>
-          <properties-and-attributes message="Hello world"></properties-and-attributes>
+      <div id="header">
+        <span class="logo"><a href="https://open-wc.org">${openWc}</a></span>
+        <h1>${this.capitalize(this.activeTab)} demos</h1>
+        <a class="github" href="https://www.github.com/open-wc/lit-demos" target="_blank">${github}</a>
       </div>
-      </paper-card>
 
-      <paper-card>
-        <div class="demo">
-          <h2>Handle events</h2>
-          <handle-events></handle-events>
-        </div>
-      </paper-card>
+      <vaadin-tabs class="${this.smallScreen ? 'nav' : ''}" orientation="${this.smallScreen ? 'vertical' : 'horizontal'}" selected=${this.tabs.indexOf(this.activeTab)} theme="${this.smallScreen ? '' : 'centered'}">
+        <vaadin-tab @click=${() => this.switchRoute('basic')}>Basic</vaadin-tab>
+        <vaadin-tab @click=${() => this.switchRoute('intermediate')}>Intermediate</vaadin-tab>
+        <vaadin-tab @click=${() => this.switchRoute('advanced')}>Advanced</vaadin-tab>
+      </vaadin-tabs>
 
-      <paper-card>
-        <div class="demo">
-          <h2>Conditional rendering</h2>
-          <conditional-rendering message="Hello world"></conditional-rendering>
-        </div>
-      </paper-card>
-
-      <paper-card>
-        <div class="demo">
-          <h2>Repeated templates</h2>
-          <repeated-templates></repeated-templates>
-        </div>
-      </paper-card>
-
-      <paper-card>
-        <div class="demo">
-          <h2>Update arrays and objects</h2>
-          <update-arrays-and-objects></update-arrays-and-objects>
-        </div>
-      </paper-card>
-
-      <paper-card>
-        <div class="demo">
-          <h2>Render styles</h2>
-          <render-styles></render-styles>
-        </div>
-      </paper-card>
+      <div id="outlet">
+      </div>
+      <p class="footer">🚽 Made with love by <a target="_blank" href="https://open-wc.org/">open-wc</a>.</p>
     `;
+  }
+
+  capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 }
 
