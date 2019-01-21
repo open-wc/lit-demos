@@ -7,7 +7,7 @@
     "@vaadin/router": "^1.2.0",
     "@vaadin/vaadin-tabs": "^2.1.1",
     "@webcomponents/webcomponentsjs": "^2.2.3",
-    "lit-element": "2.0.0-rc.2",
+    "lit-element": "2.0.0-rc.3",
     "lit-html": "1.0.0-rc.2",
     "pwa-helpers": "^0.9.0"
   }
