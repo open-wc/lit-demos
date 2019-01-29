@@ -10,17 +10,15 @@ class RenderStyles extends LitElement {
    * of shadow dom, see: https://github.com/praveenpuglia/shadow-dom-in-depth
    */
   static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-        }
+    return css`
+      :host {
+        display: block;
+      }
 
-        .message {
-          color: blue;
-        }
-      `,
-    ];
+      .message {
+        color: blue;
+      }
+    `;
   }
 
   render() {

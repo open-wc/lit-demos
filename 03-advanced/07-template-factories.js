@@ -12,6 +12,7 @@ import { LitElement, html } from 'lit-element';
 // In this case we are accepting a property, text content and an event handler
 const templateFactory = (inputValue, buttonText, onSubmit) => html`
   <input id="usernameInput" value="${inputValue}">
+
   <button @click="${onSubmit}">
     ${buttonText}
   </button>
@@ -29,6 +30,7 @@ class TemplateFactories extends LitElement {
     super();
 
     this.username = 'Steve';
+    this._onUsernameSubmit = this..bind(this);
   }
 
   render() {
@@ -38,7 +40,7 @@ class TemplateFactories extends LitElement {
         and a method reference for the event handler
       -->
       <h3>Username: ${this.username}</h3>
-      ${templateFactory(this.username, 'Change username', this._onUsernameSubmit.bind(this))}
+      ${templateFactory(this.username, 'Change username', this._onUsernameSubmit)}
     `;
   }
 

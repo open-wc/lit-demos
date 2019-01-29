@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit-element';
+import { LitElement, html, css } from 'lit-element';
 
 // A powerful feature of lit-html is that templates are just variables.
 // You can create them anywhere, and you can define generic templates
@@ -10,14 +10,16 @@ const sharedTemplate = html`
 `;
 
 class SharedTemplateA extends LitElement {
+  static get styles() {
+    return css`
+      .container {
+        border: 2px solid black;
+      }
+    `;
+  }
 
   render() {
     return html`
-      <style>
-        .container {
-          border: 2px solid black;
-        }
-      </style>
       <!-- The shared template is used by this element -->
       <div class="container">
         Element A
@@ -31,14 +33,16 @@ class SharedTemplateA extends LitElement {
 customElements.define('shared-template-a', SharedTemplateA);
 
 class SharedTemplateB extends LitElement {
+  static get styles() {
+    return css`
+      .container {
+        border: 2px dotted black;
+      }
+    `;
+  }
 
   render() {
     return html`
-      <style>
-        .container {
-          border: 2px dotted black;
-        }
-      </style>
       <!-- The shared template is used by this element -->
       <div class="container">
         Element B
@@ -54,16 +58,18 @@ customElements.define('shared-template-b', SharedTemplateB);
 
 
 class SharedTemplates extends LitElement {
+  static get styles() {
+    return css`
+      shared-template-a,
+      element-b {
+        display: block;
+        margin: 8px 0;
+      }
+    `;
+  }
 
   render() {
     return html`
-      <style>
-        shared-template-a,
-        element-b {
-          display: block;
-          margin: 8px 0;
-        }
-      </style>
       <shared-template-a></shared-template-a>
       <shared-template-b></shared-template-b>
     `;

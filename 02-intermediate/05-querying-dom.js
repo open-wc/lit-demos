@@ -36,14 +36,16 @@ class QueryingDom extends LitElement {
       <input id="usernameInput" name="username">
       <button @click="${() => this._addUsername()}">Add user</button>
       <ul>
-        ${this.users.map(user => html`<li>${user}</li>`)}
+        ${this.users.map(user => html`
+          <li>${user}</li>
+        `)}
       </ul>
     `;
   }
 
   _addUsername() {
     this.users = [...this.users, this.username];
-    
+
     // Use the input getter and clear the value
     this.usernameInput.value = '';
   }

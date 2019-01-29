@@ -17,7 +17,7 @@ class ReflectingAttributes extends LitElement {
 
         <my-button disabled></my-button>
         <my-button></my-button>
-    `; 
+    `;
   }
 }
 
@@ -41,9 +41,7 @@ class MyButton extends LitElement {
     this.disabled = false;
   }
 
-  render() {    
-    const { disabled } = this;
-
+  render() {
     return html`
       <style>
         .disabled {
@@ -54,7 +52,7 @@ class MyButton extends LitElement {
           border: solid 2px #9B35FA;
         }
       </style>
-      <div class="${disabled ? 'disabled' : 'enabled'}">
+      <div class="${this.disabled ? 'disabled' : 'enabled'}">
         Hello universe
       </div>
     `;
@@ -62,4 +60,3 @@ class MyButton extends LitElement {
 }
 
 customElements.define('my-button', MyButton);
- 

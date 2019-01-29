@@ -18,7 +18,7 @@ class PassingProperties extends LitElement {
   }
 
   /**
-   * In lit-html, you can use template expressions (${}) to set properties and attributes 
+   * In lit-html, you can use template expressions (${}) to set properties and attributes
    * on elements with a similar syntax.
    */
   render() {
@@ -44,7 +44,7 @@ class AuthorProfile extends LitElement {
   render() {
     return html`
       <div>${this.author.name}</div>
-      <div>${this.books.map((book) => html`<li>${book.title}</li>`)}
+      <div>${this.books.map(book => html`<li>${book.title}</li>`)}
     `;
   }
 }
