@@ -13,7 +13,7 @@ class Lifecycle extends LitElement {
   }
 
   /**
-  * The connectedCallback is called when the element is inserted to the DOM.  
+  * The connectedCallback is called when the element is inserted to the DOM.
   */
   connectedCallback() {
     super.connectedCallback();
@@ -31,8 +31,8 @@ class Lifecycle extends LitElement {
   }
 
   /**
-  * Called after the element's DOM has been updated the first time, immediately before updated() 
-  * is called. This method can be useful for querying dom. Setting properties inside 
+  * Called after the element's DOM has been updated the first time, immediately before updated()
+  * is called. This method can be useful for querying dom. Setting properties inside
   * this method will trigger the element to update.
   */
   firstUpdated() {
@@ -68,13 +68,13 @@ class Lifecycle extends LitElement {
 
     return html`
       <p>Open your console to see when lifecycle methods occur.</p>
-      
+
       <!-- Adding an item will cause myArr to change, the property change will get picked up and trigger an update -->
       <button @click=${this._addItem}>add item</button>
       <ul>
-        ${myArr.map((item) => {
-          return html`<li>${item}</li>`;
-        })}
+        ${myArr.map(item => html`
+          <li>${item}</li>
+        `)}
       </ul>
     `;
   }

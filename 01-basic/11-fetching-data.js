@@ -24,10 +24,9 @@ class FetchingData extends LitElement {
     const { response } = this;
     return html`
         <ul>
-          ${response.map((item) => {
-              return html`<li>${item.name}</li>`;
-            })
-          }
+          ${response.map(item => html`
+            <li>${item.name}</li>
+          `)}
         </ul>
       `;
   }

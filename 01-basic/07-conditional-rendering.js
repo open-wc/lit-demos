@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit-element';
 
+// You also implement conditional logic in separate functions
 function getMessage(message, showMessage) {
   if (!showMessage) {
     return '';
