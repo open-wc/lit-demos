@@ -30,7 +30,7 @@ class TemplateFactories extends LitElement {
     super();
 
     this.username = 'Steve';
-    this._onUsernameSubmit = this..bind(this);
+    this._onUsernameSubmit = this._onUsernameSubmit.bind(this);
   }
 
   render() {
