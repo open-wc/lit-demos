@@ -85,7 +85,13 @@ class IntermediateDemos extends LitElement {
         </div>
       </paper-card>
 
-
+      <paper-card>
+        <div class="demo">
+          <a href="https://stackblitz.com/edit/open-wc-lit-demos?file=02-intermediate%2F03-lifecycle.js" target="_blank"><h2>03 Lifecycle</h2></a>
+          <button @click=${() => this.showLifecycleDemo = !this.showLifecycleDemo}>Toggle lifecycle demo</button>
+          ${this.showLifecycleDemo ? html`<lifecycle-demo></lifecycle-demo>` : ''}
+        </div>
+      </paper-card>
 
       <paper-card>
         <div class="demo">
@@ -98,14 +104,6 @@ class IntermediateDemos extends LitElement {
         <div class="demo">
           <a href="https://stackblitz.com/edit/open-wc-lit-demos?file=02-intermediate%2F05-querying-dom.js" target="_blank"><h2>05 Querying dom</h2></a>
           <querying-dom></querying-dom>
-        </div>
-      </paper-card>
-
-      <paper-card>
-        <div class="demo">
-          <a href="https://stackblitz.com/edit/open-wc-lit-demos?file=02-intermediate%2F06-lifecycle.js" target="_blank"><h2>06 Lifecycle</h2></a>
-          <button @click=${() => this.showLifecycleDemo = !this.showLifecycleDemo}>Toggle lifecycle demo</button>
-          ${this.showLifecycleDemo ? html`<lifecycle-demo></lifecycle-demo>` : ''}
         </div>
       </paper-card>
 
