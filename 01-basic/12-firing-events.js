@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit-element';
 
 class FireEventsParent extends LitElement {
   someCallback(event) {
-    console.log(event);
+    console.log(event.detail);
   }
 
   render() {
@@ -14,7 +14,7 @@ class FireEventsParent extends LitElement {
 
 class FireEventsChild extends LitElement {
   handleClick() {
-    this.dispatchEvent(new CustomEvent('event-fired'));
+    this.dispatchEvent(new CustomEvent('event-fired', { detail: id }));
   }
 
   render() {
