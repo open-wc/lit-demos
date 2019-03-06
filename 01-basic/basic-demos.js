@@ -10,6 +10,7 @@ import './08-repeated-templates.js';
 import './09-update-arrays-and-objects.js';
 import './10-render-styles.js';
 import './11-fetching-data.js';
+import './12-firing-events.js';
 
 class BasicDemos extends LitElement {
   static get styles() {
@@ -136,6 +137,13 @@ class BasicDemos extends LitElement {
         <div class="demo">
           <a href="https://stackblitz.com/edit/open-wc-lit-demos?file=01-basic%2F11-fetching-data.js" target="_blank"><h2>11 Fetching data</h2></a>
           <fetching-data></fetching-data>
+        </div>
+      </paper-card>
+
+      <paper-card>
+        <div class="demo">
+          <a href="https://stackblitz.com/edit/open-wc-lit-demos?file=01-basic%2F12-firing-events.js" target="_blank"><h2>12 Firing events</h2></a>
+          <fire-events-parent></fire-events-parent>
         </div>
       </paper-card>
     `;
