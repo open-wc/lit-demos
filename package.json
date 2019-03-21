@@ -9,10 +9,10 @@
     "@polymer/paper-card": "^3.0.1",
     "@vaadin/router": "^1.2.0",
     "@vaadin/vaadin-tabs": "^2.1.1",
-    "@webcomponents/webcomponentsjs": "^2.2.6",
-    "lit-element": "^2.0.1",
+    "@webcomponents/webcomponentsjs": "^2.2.7",
+    "lit-element": "^2.1.0",
     "lit-html": "^1.0.0",
-    "pwa-helpers": "^0.9.0"
+    "pwa-helpers": "^0.9.1"
   },
   "devDependencies": {
     "owc-dev-server": "^0.1.1"
