@@ -27,7 +27,7 @@ class SharedStylesA extends LitElement {
 
   render() {
     return html`
-      ${sharedStyles}
+      <style>${sharedStyles}</style>
       <div class="box-wrapper">
         <div class="box"><div>
       </div>
